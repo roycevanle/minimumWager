@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Police Shootings</title>
+
+    <!-- jQuery, Bootstrap -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+    <!-- leaflet libraries -->
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+    <!-- Custom files -->
+    <script type="text/javascript" src="js/map.js"></script>
+    <link rel="stylesheet" href="css/main.css"/>
+  </head>
+  <body>
+    <!-- You may want to put your title and additional information here -->
+    <div id="heading">
+      <h1>/Police Shootings\</h1>
+      <p>
+        <center>
+          The data below dipicts the sensitive statistics of police activity across the USA. Any shade of blue circles indicate that the person was shot and killed by the police while shades of grey represent those who were hit but survived. <br>
+          <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202">Data Source</a>
+        </center>
+      </p>
+    </div>
+    <div class="container">
+
+      <!-- This is where I created my table and how I manipulated it in JS and CSS -->
+      <table class="container" id="table">
+        <h2><b><center> Victims Killed or Hit Data #s</center></b></h2>
+          <div class="col-xs-4">
+          </div>
+      </table>
+    </div>
+
+    <!-- This is the div that your map will go in. You'll need to reference its id -->
+    <div id="map" class="container">
+      <div id="container"></div>
+    </div>
+    <script> 
+    
+      // This is where you should execute your drawMap function
+      drawMap();     
+    </script>
+    </div>
+
+  </body>
