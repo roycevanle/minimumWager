@@ -1,7 +1,7 @@
 var drawMap = function() {
 	var mapboxToken ='pk.eyJ1Ijoicm95Y2V2YW5sZSIsImEiOiJjaWZ5cnFlcDI1YnVxdHRseTgzZWhxNmZwIn0.XxDZj0hFumbpRN0O6pWF0g';
 	var map = L.map('map').setView([37.8, -96], 4);
-	var mapColor = "mapbox.dark";
+	var mapColor = "mapbox.light";
 	var layer = L.tileLayer('https://api.tiles.mapbox.com/v4/'+mapColor+'/{z}/{x}/{y}.png?access_token='+mapboxToken);
 	layer.addTo(map);
 	L.geoJson(statesData, {style: style}).addTo(map);
