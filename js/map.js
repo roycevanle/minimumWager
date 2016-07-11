@@ -1,7 +1,7 @@
 // Function to draw your map
 var drawMap = function() {
   	// Create map and set view
-	var map = L.map('map').setView([36, -100], 4, 0);
+	var map = L.map('map').setView([44.996, -102.041], 4, 0);
 	// create vars to make map look pretty
 	var mapColor = "mapbox.dark";
 	var mapboxToken = 'pk.eyJ1Ijoicm95Y2V2YW5sZSIsImEiOiJjaWZ5cnFlcDI1YnVxdHRseTgzZWhxNmZwIn0.XxDZj0hFumbpRN0O6pWF0g';
@@ -18,7 +18,7 @@ var getData = function(map) {
   	// Execute an AJAX request to get the data in data/response.js
   	var data;
 	$.ajax({
-		url:'./data/response.json',
+		url:'./data/minWage.json',
 	  	dataType: "json",
 	// When your request is successful, call your customBuild function
 	    success:function(dat) {
