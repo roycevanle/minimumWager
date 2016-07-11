@@ -33,7 +33,7 @@ var customBuild = function(data, map) {
 	// Creates new layers
 	var dWhite = new L.LayerGroup();
 	var dBlack = new L.LayerGroup();
-	var dAsian = new L.LayerGroup();
+	var dAsian = new L.LayerGroup(); 
 	var dPacific = new L.LayerGroup();
 	var dIndianNative = new L.LayerGroup();
 	var dHawaiianPacific = new L.LayerGroup();
