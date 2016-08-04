@@ -36,7 +36,18 @@ function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
-        // click: zoomToFeature
+        click: change
+    });
+}
+
+function change (e) {
+    var layer = e.target;
+
+    $.getJSON( "../data/minWage.json", function( data ) {
+        console.log("success 1");
+
+        console.log(layer.feature.properties.name);
+        layer.bindPopup(layer.feature.properties.name).openPopup();
     });
 }
 
