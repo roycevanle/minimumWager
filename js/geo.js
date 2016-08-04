@@ -44,10 +44,19 @@ function change (e) {
     var layer = e.target;
 
     $.getJSON( "../data/minWage.json", function( data ) {
-        console.log("success 1");
 
-        console.log(layer.feature.properties.name);
-        layer.bindPopup(layer.feature.properties.name).openPopup();
+        var stateName = layer.feature.properties.name;
+
+        // Parse through the minWage.json file to find the appropriate state
+        data.forEach(function(state) {
+            if (state.STATE == stateName) {
+                layer.bindPopup(stateName + " " + state.POPULATION + " " + state["MINIMUM WAGE"]
+                    + " " + state["POVERTY LEVEL"] + " " + state["POVERTY LEVEL PER HOUR"] 
+                    + " " + state["POVERTY LEVEL OF 4"] + " " + state["POVERTY LEVEL OF 4 PER HOUR"]).openPopup();
+            }
+        });
+
+        console.log("success FINISHED");
     });
 }
 
