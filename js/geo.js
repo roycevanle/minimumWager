@@ -1,15 +1,16 @@
 var geojson;
+var map;
 
 var drawMap = function() {
 	var mapboxToken ='pk.eyJ1Ijoicm95Y2V2YW5sZSIsImEiOiJjaWZ5cnFlcDI1YnVxdHRseTgzZWhxNmZwIn0.XxDZj0hFumbpRN0O6pWF0g';
-	var map = L.map('map').setView([37.8, -96], 4);
+	map = L.map('map').setView([37.8, -96], 4);
 	var mapColor = "mapbox.light";
 	var layer = L.tileLayer('https://api.tiles.mapbox.com/v4/'+mapColor+'/{z}/{x}/{y}.png?access_token='+mapboxToken);
 	layer.addTo(map);
 	geojson = L.geoJson(statesData, {style: style, onEachFeature: onEachFeature }).addTo(map);
 }
 
-
+/*
 function getColor(d) {
     return d > 1000 ? '#800026' :
            d > 500  ? '#BD0026' :
@@ -20,10 +21,11 @@ function getColor(d) {
            d > 10   ? '#FED976' :
                       '#FFEDA0';
 }
+*/
 
 function style(feature) {
     return {
-        fillColor: getColor(feature.properties.density),
+        fillColor: '#85bb65',
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -48,15 +50,26 @@ function change (e) {
         var stateName = layer.feature.properties.name;
 
         // Parse through the minWage.json file to find the appropriate state
+        // *** Need to change so it can find with a key instead of looping through the entire json file
         data.forEach(function(state) {
+
+            // the one commented out works!!! testing new things
+
             if (state.STATE == stateName) {
-                layer.bindPopup(stateName + " " + state.POPULATION + " " + state["MINIMUM WAGE"]
-                    + " " + state["POVERTY LEVEL"] + " " + state["POVERTY LEVEL PER HOUR"] 
-                    + " " + state["POVERTY LEVEL OF 4"] + " " + state["POVERTY LEVEL OF 4 PER HOUR"]).openPopup();
+                var textBox = stateName + "\n Population: " +
+                    state.POPULATION + "\n Minimum Wage: " + 
+                    state["MINIMUM WAGE"] + "\n Poverty Level: " + 
+                    state["POVERTY LEVEL"] + "\n Poverty Level/Hr: " + 
+                    state["POVERTY LEVEL PER HOUR"] + "\n Poverty Level of 4: " + 
+                    state["POVERTY LEVEL OF 4"] + "\n Poverty Level of 4/Hr: " + 
+                    state["POVERTY LEVEL OF 4 PER HOUR"];
+                var popup = L.popup({'maxHeight': 75}).setContent(textBox);
+                layer.bindPopup(popup).openPopup();
             }
+
         });
 
-        console.log("success FINISHED");
+        console.log("success \n FINISHED");
     });
 }
 
