@@ -45,7 +45,7 @@ function onEachFeature(feature, layer) {
 function change (e) {
     var layer = e.target;
 
-    $.getJSON( "../data/minWage.json", function( data ) {
+    $.getJSON( "data/minWage.json", function( data ) {
 
         var stateName = layer.feature.properties.name;
 
@@ -56,20 +56,18 @@ function change (e) {
             // the one commented out works!!! testing new things
 
             if (state.STATE == stateName) {
-                var textBox = stateName + "\n Population: " +
-                    state.POPULATION + "\n Minimum Wage: " + 
-                    state["MINIMUM WAGE"] + "\n Poverty Level: " + 
-                    state["POVERTY LEVEL"] + "\n Poverty Level/Hr: " + 
-                    state["POVERTY LEVEL PER HOUR"] + "\n Poverty Level of 4: " + 
-                    state["POVERTY LEVEL OF 4"] + "\n Poverty Level of 4/Hr: " + 
-                    state["POVERTY LEVEL OF 4 PER HOUR"];
+                var textBox = "<strong>" + stateName + "</strong>" + "<p><strong>Population:</strong> " +
+                    state.POPULATION + "</p><p><strong>Minimum Wage:</strong> $" + 
+                    state["MINIMUM WAGE"] + "</p><p><strong>Poverty Level:</strong> " + 
+                    state["POVERTY LEVEL"] + "</p><p><strong>Poverty Level per Hr:</strong> $" + 
+                    state["POVERTY LEVEL PER HOUR"] + "</p><p><strong>Poverty Level of 4:</strong>" + 
+                    state["POVERTY LEVEL OF 4"] + "</p><p><strong>Poverty Level of 4 per Hr:</strong> $" + 
+                    state["POVERTY LEVEL OF 4 PER HOUR"] + "</p>";
                 var popup = L.popup({'maxHeight': 75}).setContent(textBox);
                 layer.bindPopup(popup).openPopup();
             }
 
         });
-
-        console.log("success \n FINISHED");
     });
 }
 
